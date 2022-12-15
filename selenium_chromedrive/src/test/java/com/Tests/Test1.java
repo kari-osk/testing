@@ -57,7 +57,7 @@ public class Test1 {
 
         String transfErrorMessage = page.errorMessage();
         assertTrue(transfErrorMessage.contains("Conta inválida ou inexistente"));
-        System.out.println("Erro na alert: " + transfErrorMessage);
+        System.out.println("Mensagem de erro: " + transfErrorMessage);
         page.closeModalBtnTransfer();
         Thread.sleep(1000);
         page.goBack();
