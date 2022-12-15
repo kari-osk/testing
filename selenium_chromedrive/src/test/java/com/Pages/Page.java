@@ -32,11 +32,12 @@ public class Page extends BasePage {
     protected static final String transferBtnXpath = "//*[@id=\"btn-TRANSFERÊNCIA\"]/span/img"; //xpath
     protected static final String accountNumberXpath = "//*[@id=\"__next\"]/div/div[3]/form/div[1]/div[1]/input";// xpath
     protected static final String accountDigitoCss = "#__next > div > div.transfer__ContainerForm-sc-1yjpf2r-8.gasnNO > form > div.account__data > div:nth-child(2) > input"; //cssselector
-    protected static final String valueXpath = "//*[@id=\"__next\"]/div/div[3]/form/div[2]/input"; //xpath
-    protected static final String descriptionCss = "#__next > div > div.transfer__ContainerForm-sc-1yjpf2r-8.gasnNO > form > div.style__ContainerFieldInput-sc-s3e9ea-0.gQAEIG.input__child > input"; //css
+    protected static final String valueCss = "#__next > div > div.transfer__ContainerForm-sc-1yjpf2r-8.gasnNO > form > div:nth-child(2) > input"; //css
+    protected static final String descriptionCss = "#__next > div > div.transfer__ContainerForm-sc-1yjpf2r-8.gasnNO > form > div:nth-child(3) > input"; //css
+
     protected static final String transferNowBtnXpath = "//*[@id=\"__next\"]/div/div[3]/form/button"; //xpath
 
-    protected static final String errorMessageCss = "#modalText"; // css
+    protected static final String errorMessageXpath = "//*[@id=\"modalText\"]"; // xpath
     protected static final String closeModalTransCss = "#btnCloseModal"; // css
     protected static final String goBackBtnXpath = "//*[@id=\"btnBack\"]"; // xpath
 
@@ -141,7 +142,7 @@ public class Page extends BasePage {
         accessBtn.click();
     }
 
-    public void makeTransfer(String account, String digito, CharSequence amount, String description) {
+    public void makeTransfer(String account, String digito, String amount, String description) {
         WebElement accountNumber = getWebElement(By.xpath(accountNumberXpath));
         accountNumber.clear();
         accountNumber.sendKeys(account);
@@ -150,7 +151,7 @@ public class Page extends BasePage {
         accountDigito.clear();
         accountDigito.sendKeys(digito);
 
-        WebElement transferValue = getWebElement(By.xpath(valueXpath));
+        WebElement transferValue = getWebElement(By.cssSelector(valueCss));
         transferValue.clear();
         transferValue.sendKeys(amount);
 
@@ -165,8 +166,8 @@ public class Page extends BasePage {
     }
 
     public String errorMessage() {
-        WebElement errorText = getWebElement(By.cssSelector(errorMessageCss));
-        return errorText.getText()
+        WebElement errorText = getWebElement(By.xpath(errorMessageXpath));
+        return errorText.getText();
     }
 
     public void closeModalBtnTransfer() {

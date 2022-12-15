@@ -22,17 +22,17 @@ public class Test1 {
     public void registerTest() throws InterruptedException {
         page.register("euismod@outlook.org", "123456");
         page.registerBtn();
-        Thread.sleep(1500);
+        Thread.sleep(1000);
 
         page.cadastro("euismod@outlook.org", "Euismod", "123456", "123456");
         page.cadastrarBtn();
-        Thread.sleep(1500);
+        Thread.sleep(1000);
         page.closeModal();
-        Thread.sleep(1500);
+        Thread.sleep(1000);
 
         page.loginPage("euismod@outlook.org", "123456");
         page.loginBtn();
-        Thread.sleep(1500);
+        Thread.sleep(1000);
 
         page.accessSaque();
         Thread.sleep(1500);
