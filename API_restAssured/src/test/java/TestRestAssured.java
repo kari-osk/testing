@@ -5,7 +5,7 @@ import io.restassured.response.ValidatableResponse;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
-public class TestResAssured {
+public class TestRestAssured {
 
     @Test
     public void api_test_01() {
